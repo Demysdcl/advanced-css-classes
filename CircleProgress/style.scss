@@ -1,0 +1,80 @@
+@import '@/styles/variables.scss';
+
+.progress-circle {
+    font-size: 20px;
+    margin: 20px;
+    position: relative;
+    padding: 0;
+    width: 5.75em;
+    height: 5.75em;
+    background-color: $color-primary--lightest-white;
+    border-radius: 50%;
+    line-height: 5em;
+
+    &:after {
+        border: none;
+        position: absolute;
+        top: 0.45em;
+        left: 0.45em;
+        text-align: center;
+        display: block;
+        border-radius: 50%;
+        width: 4.85em;
+        height: 4.85em;
+        background-color: white;
+        content: " ";
+    }
+
+    span {
+        position: absolute;
+        line-height: 5.75em;
+        width: 5.75em;
+        text-align: center;
+        display: block;
+        color: $color-primary;
+        z-index: 2;
+    }
+
+    &:not(.over50) {
+        .first50-bar {
+            display: none;
+        }
+    }
+
+    .left-half-clipper {
+        border-radius: 50%;
+        width: 5.75em;
+        height: 5.75em;
+        position: absolute;
+        clip: rect(0, 5.75em, 5.75em, 2.99em);
+
+        .value-bar {
+            position: absolute;
+            clip: rect(0, 3em, 5.75em, 0);
+            width: 5.75em;
+            height: 5.75em;
+            border-radius: 50%;
+            border: 0.45em solid $color-primary;
+            box-sizing: border-box;
+            transition: transform .3s;
+        }
+
+    }
+
+    &.over50 {
+        .left-half-clipper {
+            clip: rect(auto, auto, auto, auto);
+        }
+
+        .first50-bar {
+            position: absolute;
+            clip: rect(0, 5.75em, 5.75em, 2.99em);
+            background-color: $color-primary;
+            border-radius: 50%;
+            width: 5.75em;
+            height: 5.75em;
+
+        }
+    }
+
+}
